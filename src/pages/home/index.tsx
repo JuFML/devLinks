@@ -1,3 +1,5 @@
+import Social from "../../components/Social"
+import { FaFacebook, FaYoutube, FaInstagram } from "react-icons/fa"
 
 
 const Home = () => {
@@ -16,7 +18,15 @@ const Home = () => {
         </section>
 
         <footer className="flex justify-center gap-3 my-4">
-
+          <Social url="https://www.facebook.com/juliana.fernandez.7">
+            <FaFacebook size={36} color="fff" />
+          </Social>
+          <Social url="https://www.youtube.com/@milenagirlgames970">
+            <FaYoutube size={36} color="fff" />
+          </Social>
+          <Social url="https://www.instagram.com/jfml/">
+            <FaInstagram size={36} color="fff" />
+          </Social>
         </footer>
 
       </main>
