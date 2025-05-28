@@ -15,6 +15,11 @@ const Login = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
 
+    if (email === "" || password === "") {
+      alert("Preencha todos os campos")
+      return
+    }
+
     signInWithEmailAndPassword(auth, email, password)
       .then(() => navigate("/admin", { replace: true }))
       .catch((error) => console.log("deu ruim", error))
