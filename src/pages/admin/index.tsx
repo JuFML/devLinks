@@ -54,7 +54,7 @@ const Admin = () => {
     getDocs(collection(db, "links"))
       .then((snapshot) => {
         const links: LinkProps[] = []
-        snapshot.forEach((doc) => {
+        snapshot?.forEach((doc) => {
           links.push({
             id: doc.id,
             name: doc.data().name,
