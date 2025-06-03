@@ -1,54 +1,59 @@
-# React + TypeScript + Vite
+<h1 align="center">
+    DevLinks
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center">
+  <img width="300" src="public/presentation.jpg" alt="DevLinks preview"/>
+  <img width="300" src="public/presentation2.jpg" alt="DevLinks preview"/>
+  <img width="300" src="public/presentation3.jpg" alt="DevLinks preview"/>
+  <img width="300" src="public/presentation4.jpg" alt="DevLinks preview"/>
+</h1>
 
-Currently, two official plugins are available:
+<h3 align="center">
+  <a href="https://devlinks-ju.netlify.app/" target="_blank">Access demo page</a>
+<h3 >
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Index
 
-## Expanding the ESLint configuration
+- [About](#-about)
+- [Technologies used](#-technologies-used)
+- [How to install and run the project](#-how-to-install-and-run-the-project)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🔖&nbsp; About
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+DevLinks is a simple application created to allow users to register and manage their personal links and social media profiles. Once logged in, users can create, edit, and delete links, and all of their saved links are displayed on a public home page.
+The system includes authentication and protected routes to ensure only authorized users can access and manage their content.
+
+---
+
+## 🚀 Technologies used
+
+The project was developed using the following technologies
+
+- ReactJS
+- TypeScript
+- Firebase Authentication
+- Firebase Firestore
+- React Router DOM
+- Tailwind CSS
+
+---
+
+## 🗂 How to install and run the project
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/devlinks.git
+
+# Enter the project folder
+cd devlinks
+
+# Install dependencies
+npm install
+
+# Run the project
+npm run dev
 ```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Developed ❤ by Juliana Fernandez
