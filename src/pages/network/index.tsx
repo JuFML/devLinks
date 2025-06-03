@@ -8,23 +8,23 @@ import { toast } from "react-toastify"
 
 
 const Network = () => {
-  const [facebook, setFacebook] = useState("")
+  const [github, setGithub] = useState("")
   const [instagram, setInstagram] = useState("")
-  const [youtube, setYoutube] = useState("")
+  const [linkedin, setLinkedin] = useState("")
 
   const handleRegister = (e: FormEvent) => {
     e.preventDefault()
 
     const docRef = doc(db, "network", "link")
     setDoc(docRef, {
-      facebook,
+      github,
       instagram,
-      youtube
+      linkedin
     })
-      .then(() => toast.success("Network links cadastrados com sucesso!"))
+      .then(() => toast.success("Network links registered successfully!"))
       .catch((error) => {
-        console.log("ALGO DEU ERRADO AO CADASTRAR O LINK DOS NETWORKS!", error)
-        toast.success("ALGO DEU ERRADO AO CADASTRAR O LINK DOS NETWORKS!")
+        console.log("SOMETHING WENT WRONG WHILE REGISTERING THE NETWORKS LINK!", error)
+        toast.success("SOMETHING WENT WRONG WHILE REGISTERING THE NETWORKS LINK!")
       })
 
   }
@@ -34,14 +34,14 @@ const Network = () => {
     getDoc(docRef)
       .then((snapshot) => {
         if (snapshot.data() !== undefined) {
-          setFacebook(snapshot.data()?.facebook)
+          setGithub(snapshot.data()?.github)
           setInstagram(snapshot.data()?.instagram)
-          setYoutube(snapshot.data()?.youtube)
+          setLinkedin(snapshot.data()?.linkedin)
         }
       })
       .catch((error) => {
-        toast.error("Não foi possivel buscar o link das Redes Sociais!")
-        console.log("Não foi possivel buscar o link das Redes Sociais!:", error)
+        toast.error("Unable to fetch Social Media link!")
+        console.log("Unable to fetch Social Media link!:", error)
       })
   }
 
@@ -53,35 +53,35 @@ const Network = () => {
     <div className="flex items-center flex-col min-h-screen pb-7 px-2">
       <Header />
 
-      <h1 className="text-white text-2xl font-medium mt-8 mb-4">Minhas redes sociais</h1>
+      <h1 className="text-white text-2xl font-medium mt-8 mb-4">My Social Networks</h1>
 
       <form onSubmit={handleRegister} className="flex flex-col mt-8 mb-3 w-full max-w-xl">
-        <label className="text-white font-medium mt-2 mb-2">Link do facebook</label>
+        <label className="text-white font-medium mt-2 mb-2">Github Link</label>
         <Input
           type="url"
-          placeholder="Digite a url do facebook..."
-          value={facebook}
-          onChange={(e) => setFacebook(e.target.value)}
+          placeholder="Enter the github url..."
+          value={github}
+          onChange={(e) => setGithub(e.target.value)}
         />
 
-        <label className="text-white font-medium mt-2 mb-2">Link do instagram</label>
+        <label className="text-white font-medium mt-2 mb-2">Instagram link</label>
         <Input
           type="url"
-          placeholder="Digite a url do instagram..."
+          placeholder="Enter the instagram url..."
           value={instagram}
           onChange={(e) => setInstagram(e.target.value)}
         />
 
-        <label className="text-white font-medium mt-2 mb-2">Link do youtube</label>
+        <label className="text-white font-medium mt-2 mb-2">Linkedin link</label>
         <Input
           type="url"
-          placeholder="Digite a url do youtube..."
-          value={youtube}
-          onChange={(e) => setYoutube(e.target.value)}
+          placeholder="Enter the linkedin url..."
+          value={linkedin}
+          onChange={(e) => setLinkedin(e.target.value)}
         />
 
         <button type="submit" className="mb-7 bg-blue-600 h-9 rounded-md text-white font-medium gap-4 flex justify-center items-center">
-          Salvar Links
+          Save Links
         </button>
       </form>
 

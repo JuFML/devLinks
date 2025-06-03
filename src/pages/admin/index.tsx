@@ -30,7 +30,7 @@ const Admin = () => {
     e.preventDefault()
 
     if (nameInput === "" || urlInput === "") {
-      alert("Preencha todos os campos")
+      toast.warning("Fill in all fields!")
       return
     }
 
@@ -43,10 +43,10 @@ const Admin = () => {
       getLinks()
       setNameInput("")
       setUrlInput("")
-      console.log("LINK CADASTRADO COM SUCESSO")
+      console.log("LINK REGISTERED SUCCESSFULLY")
     }).catch((error) => {
-      toast.error("ERRO AO CADASTRAR LINK")
-      console.log("ERRO AO CADASTRAR LINK: ", error)
+      toast.error("ERROR REGISTERING LINK")
+      console.log("ERROR REGISTERING LINK: ", error)
     })
   }
 
@@ -66,8 +66,8 @@ const Admin = () => {
         setLinks(links)
       })
       .catch((error) => {
-        toast.error("ALGO DEU ERRADO AO BUSCAR OS LINKS")
-        console.log("ALGO DEU ERRADO AO BUSCAR OS LINKS:", error)
+        toast.error("SOMETHING WENT WRONG WHILE SEARCHING FOR LINKS")
+        console.log("SOMETHING WENT WRONG WHILE SEARCHING FOR LINKS:", error)
       })
   }
 
@@ -75,12 +75,12 @@ const Admin = () => {
     const docRef = doc(db, "links", id)
     deleteDoc(docRef)
       .then(() => {
-        toast.success('Link deletado com sucesso!')
+        toast.success('Link deleted successfully!')
         getLinks()
       })
       .catch((error) => {
-        toast.error('Algo deu errado ao deletar o Link!')
-        console.log("Algo deu errado ao deletar o Link:", error)
+        toast.error('Something went wrong while deleting the Link!')
+        console.log("Something went wrong while deleting the Link:", error)
         getLinks()
       })
   }
@@ -94,23 +94,23 @@ const Admin = () => {
     <div className="flex items-center flex-col min-h-screen pb-7 px-2">
       <Header />
       <form onSubmit={handleRegister} className="flex flex-col mt-8 mb-3 w-full max-w-xl">
-        <label className="text-white font-medium mt-2 mb-2">Nome do Link</label>
+        <label className="text-white font-medium mt-2 mb-2">Link name</label>
         <Input
-          placeholder="Digite o nome do link..."
+          placeholder="Enter link name..."
           value={nameInput}
           onChange={(e) => setNameInput(e.target.value)}
         />
-        <label className="text-white font-medium mt-2 mb-2">Url do Link</label>
+        <label className="text-white font-medium mt-2 mb-2">Link url</label>
         <Input
           type="url"
-          placeholder="Digite a url..."
+          placeholder="Enter the link url..."
           value={urlInput}
           onChange={(e) => setUrlInput(e.target.value)}
         />
 
         <section className="flex my-4 gap-5">
           <div className="flex gap-2">
-            <label className="text-white font-medium mt-2 mb-2">Cor do Link</label>
+            <label className="text-white font-medium mt-2 mb-2">Link color</label>
             <Input
               type="color"
               value={textColorInput}
@@ -118,7 +118,7 @@ const Admin = () => {
             />
           </div>
           <div className="flex gap-2">
-            <label className="text-white font-medium mt-2 mb-2">Fundo do Link</label>
+            <label className="text-white font-medium mt-2 mb-2">Link background</label>
             <Input
               type="color"
               value={backgroundColorInput}
@@ -138,13 +138,13 @@ const Admin = () => {
           </div>
         }
 
-        <button type="submit" className="mb-7 bg-blue-600 h-9 rounded-md text-white font-medium gap-4 flex justify-center items-center">
-          Cadastrar
+        <button type="submit" className="cursor-pointer mb-7 bg-blue-600 h-9 rounded-md text-white font-medium gap-4 flex justify-center items-center">
+          Register
         </button>
       </form>
 
       <h2 className="font-bold text-white mb-4 text-2xl">
-        Meus Links
+        My Links
       </h2>
 
       {links.map(link => (

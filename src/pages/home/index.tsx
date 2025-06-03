@@ -1,5 +1,5 @@
 import Social from "../../components/Social"
-import { FaFacebook, FaYoutube, FaInstagram } from "react-icons/fa"
+import { FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa"
 
 import { db } from "../../services/firebaseConnection"
 import { getDocs, collection, getDoc, doc } from "firebase/firestore"
@@ -7,6 +7,7 @@ import { getDocs, collection, getDoc, doc } from "firebase/firestore"
 import { useEffect, useState } from "react"
 
 import { toast } from "react-toastify"
+import Header from "../../components/Header"
 
 interface LinkProps {
   id: string,
@@ -16,9 +17,9 @@ interface LinkProps {
   bgColor: string,
 }
 interface NetworkProps {
-  facebook: string,
+  github: string,
   instagram: string,
-  youtube: string
+  linkedin: string
 }
 
 const Home = () => {
@@ -41,8 +42,8 @@ const Home = () => {
         setLinks(lista)
       })
       .catch((error) => {
-        toast.error("Algo deu errado ao buscar os links!")
-        console.log("Algo deu errado ao buscar os links:", error)
+        toast.error("Something went wrong while fetching the links!")
+        console.log("Something went wrong while fetching the links:", error)
       })
   }
   const getNetwork = () => {
@@ -50,15 +51,15 @@ const Home = () => {
       .then((snapshot) => {
         if (snapshot.data() !== undefined) {
           setNetwork({
-            facebook: snapshot.data()?.facebook,
+            github: snapshot.data()?.github,
             instagram: snapshot.data()?.instagram,
-            youtube: snapshot.data()?.youtube
+            linkedin: snapshot.data()?.linkedin
           })
         }
       })
       .catch((error) => {
-        toast.error("Algo deu errado ao buscar os links das redes sociais!")
-        console.log("Algo deu errado ao buscar os links das redes sociais:", error)
+        toast.error("Something went wrong while fetching social media links!")
+        console.log("Something went wrong while fetching social media links:", error)
       })
   }
 
@@ -72,8 +73,9 @@ const Home = () => {
 
   return (
     <div className="flex flex-col w-full py-4 items-center justify-center">
-      <h1 className="md:text-4xl text-3xl font-bold text-white mt-20">Juliana Fernandez</h1>
-      <span className="text-gray-50 mb-5 mt-3">Veja meus links👇</span>
+      <Header />
+      <h1 className="md:text-4xl text-3xl font-bold text-white mt-20">Hi, Welcome to the devLink page!</h1>
+      <span className="text-gray-50 mb-5 mt-3">Check your links👇</span>
 
       <main className="flex flex-col w-11/12 max-w-xl text-center">
         {links.map(link => (
@@ -88,11 +90,11 @@ const Home = () => {
 
         {network && Object.keys(network).length > 0 && (
           <footer className="flex justify-center gap-3 my-4">
-            <Social url={network?.facebook}>
-              <FaFacebook size={36} color="fff" />
+            <Social url={network?.github}>
+              <FaGithub size={36} color="fff" />
             </Social>
-            <Social url={network?.youtube}>
-              <FaYoutube size={36} color="fff" />
+            <Social url={network?.linkedin}>
+              <FaLinkedin size={36} color="fff" />
             </Social>
             <Social url={network?.instagram}>
               <FaInstagram size={36} color="fff" />
